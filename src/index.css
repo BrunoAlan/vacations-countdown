@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* Enable manual dark mode via class strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0ea5e9;
+  --color-ferrari-red: #ff2800;
+  --color-background-light: #f3f4f6;
+  --color-background-dark: #111827;
+  --color-card-light: #ffffff;
+  --color-card-dark: #1f2937;
+  --color-text-light: #374151;
+  --color-text-dark: #e5e7eb;
+  --color-accent-orange: #f97316;
+  --color-accent-green: #10b981;
+  --color-accent-purple: #8b5cf6;
+
+  --font-family-display: "Fredoka", sans-serif;
+  --font-family-body: "Inter", sans-serif;
+
+  --radius-default: 1.5rem;
+
+  --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+:root {
+  --primary: var(--color-primary);
+  --ferrari-red: var(--color-ferrari-red);
+  --background-light: var(--color-background-light);
+  --background-dark: var(--color-background-dark);
+  --card-light: var(--color-card-light);
+  --card-dark: var(--color-card-dark);
+  --text-light: var(--color-text-light);
+  --text-dark: var(--color-text-dark);
+  --accent-orange: var(--color-accent-orange);
+  --accent-green: var(--color-accent-green);
+  --accent-purple: var(--color-accent-purple);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: "Fredoka", sans-serif;
+}
+
+header {
+  margin-bottom: 2rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  header {
+    margin-bottom: 2.5rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+main.bento-grid {
+  margin-top: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  main.bento-grid {
+    margin-top: 1.5rem !important;
+  }
+}
+
+div[class*="bg-gray-100"],
+div[class*="bg-gray-900"] {
+  padding-bottom: 2rem !important;
+}
+
+@media (min-width: 768px) {
+
+  div[class*="bg-gray-100"],
+  div[class*="bg-gray-900"] {
+    padding-bottom: 3rem !important;
+  }
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(220px, auto));
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .bento-item {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+.bento-item {
+  @apply bg-white dark:bg-gray-800 rounded-3xl p-6 transition-transform duration-300 hover:scale-[1.01] hover:shadow-lg border border-gray-100 dark:border-gray-800;
+  box-shadow: var(--shadow-soft);
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
