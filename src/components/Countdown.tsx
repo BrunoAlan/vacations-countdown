@@ -11,9 +11,31 @@ function Countdown() {
           Dias hasta el viaje
         </p>
         <div className="flex items-baseline gap-2">
-           {/*Calular dias hasta el 12 de marzo de 2026 sin que diga dias */}
           <span className="text-7xl font-display font-bold text-gray-800 dark:text-white tracking-tighter">{
-            Math.floor((new Date('2026-03-12').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
+            (() => {
+              // Obtener la fecha actual en horario de Argentina
+              const now = new Date();
+              const formatter = new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'America/Argentina/Buenos_Aires',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+              });
+              const todayArgentina = formatter.format(now);
+              
+              // Fecha objetivo: 12 de marzo de 2026
+              const targetDateStr = '2026-03-12';
+              
+              // Convertir ambas fechas a objetos Date en horario de Argentina (midnight)
+              const today = new Date(`${todayArgentina}T00:00:00-03:00`);
+              const target = new Date(`${targetDateStr}T00:00:00-03:00`);
+              
+              // Calcular diferencia en días
+              const diffTime = target.getTime() - today.getTime();
+              const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+              
+              return diffDays;
+            })()
           } </span>
           <span className="text-2xl font-bold text-sky-500">Días</span>
         </div>
